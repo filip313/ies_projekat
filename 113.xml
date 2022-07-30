@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cim="http://iec.ch/TC57/2010/CIM-schema-cim15#" xmlns:ftn="http://www.ftnydro.com/CIM15/2010/extension#">
+	<cim:ConnectivityNode rdf:ID="1231487392740_NODE">
+		<cim:ConnectivityNode.description>Ovo je moj prvi node</cim:ConnectivityNode.description>
+		<cim:IdentifiedObject.aliasName>Node 1</cim:IdentifiedObject.aliasName>
+		<cim:IdentifiedObject.mRID>12314987</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.name>Node1_node</cim:IdentifiedObject.name>
+	</cim:ConnectivityNode>
+
+
+</rdf:RDF>
