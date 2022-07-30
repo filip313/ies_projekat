@@ -143,6 +143,23 @@ namespace FTN.ESI.SIMES.CIM.CIMAdapter
 
 							break;
 						}
+					case SupportedProfiles.Projekat_113:
+                        {
+							TransformAndLoadReport report = PowerTransformerImporter.Instance.CreateNMSDelta(concreteModel);
+
+							if (report.Success)
+							{
+								nmsDelta = PowerTransformerImporter.Instance.NMSDelta;
+								success = true;
+							}
+							else
+							{
+								success = false;
+							}
+							log = report.Report.ToString();
+							PowerTransformerImporter.Instance.Reset();
+							break;
+                        }
 					default:
 						{
 							LogManager.Log(string.Format("Import of {0} data is NOT SUPPORTED.", extractType), LogLevel.Warning);

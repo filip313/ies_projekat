@@ -67,9 +67,8 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PowerTransformerCIMProfile_Labs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\PowerTransformerCIMProfile_Labs.dll</HintPath>
+    <Reference Include="Projekat_113CIMProfile_Labs">
+      <HintPath>Lib\Projekat_113CIMProfile_Labs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

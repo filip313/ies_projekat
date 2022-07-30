@@ -11,45 +11,26 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 {
 	public class ConductingEquipment : Equipment
 	{		
-		private PhaseCode phases;
-		private float ratedVoltage;
-		private long baseVoltage = 0;
 			
 		public ConductingEquipment(long globalId) : base(globalId) 
 		{
 		}
-		
-		public PhaseCode Phases
-		{
-			get
-			{
-				return phases;
-			}
 
-			set
-			{
-				phases = value;
-			}
-		}
+        private List<long> terminals;
 
-		public float RatedVoltage
-		{
-			get { return ratedVoltage; }
-			set { ratedVoltage = value; }
-		}
+        public List<long> Terminals
+        {
+            get { return terminals; }
+            set { terminals = value; }
+        }
 
-		public long BaseVoltage
-		{
-			get { return baseVoltage; }
-			set { baseVoltage = value; }
-		}
 
-		public override bool Equals(object obj)
+        public override bool Equals(object obj)
 		{
 			if (base.Equals(obj))
 			{
 				ConductingEquipment x = (ConductingEquipment)obj;
-				return (x.phases == this.phases && x.ratedVoltage == this.ratedVoltage && x.baseVoltage == this.baseVoltage);
+				return CompareHelper.CompareLists(this.terminals, x.terminals);
 			}
 			else
 			{
@@ -68,9 +49,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 		{
 			switch (property)
 			{
-				case ModelCode.CONDEQ_PHASES:				
-				case ModelCode.CONDEQ_RATEDVOLTAGE:
-				case ModelCode.CONDEQ_BASVOLTAGE:
+				case ModelCode.CONDEQ_TERMINALS:				
 					return true;
 
 				default:
@@ -82,18 +61,9 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 		{
 			switch (prop.Id)
 			{
-				case ModelCode.CONDEQ_PHASES:
-					prop.SetValue((short)phases);
+				case ModelCode.CONDEQ_TERMINALS:
+					prop.SetValue(terminals);
 					break;
-
-				case ModelCode.CONDEQ_RATEDVOLTAGE:
-					prop.SetValue(ratedVoltage);
-					break;
-
-				case ModelCode.CONDEQ_BASVOLTAGE:
-					prop.SetValue(baseVoltage);
-					break;
-
 				default:
 					base.GetProperty(prop);
 					break;
@@ -102,39 +72,56 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 
 		public override void SetProperty(Property property)
 		{
-			switch (property.Id)
-			{
-				case ModelCode.CONDEQ_PHASES:					
-					phases = (PhaseCode)property.AsEnum();
-					break;
-			
-				case ModelCode.CONDEQ_RATEDVOLTAGE:
-					ratedVoltage = property.AsFloat();
-					break;
-
-				case ModelCode.CONDEQ_BASVOLTAGE:
-					baseVoltage = property.AsReference();
-					break;
-
-				default:
-					base.SetProperty(property);
-					break;
-			}
-		}	
+			base.SetProperty(property);
+		}
 
 		#endregion IAccess implementation
 
 		#region IReference implementation
 
+		public override bool IsReferenced => this.terminals.Count > 0 || base.IsReferenced;
+
 		public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
 		{
-			if (baseVoltage != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
+			if (terminals != null && terminals.Count > 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
 			{
-				references[ModelCode.CONDEQ_BASVOLTAGE] = new List<long>();
-				references[ModelCode.CONDEQ_BASVOLTAGE].Add(baseVoltage);
+				references[ModelCode.CONDEQ_TERMINALS] = terminals.GetRange(0, terminals.Count);
 			}
-
 			base.GetReferences(references, refType);
+		}
+
+		public override void AddReference(ModelCode referenceId, long globalId)
+		{
+			switch (referenceId)
+			{
+				case ModelCode.TERMINAL_CONDEQ:
+					terminals.Add(globalId);
+					break;
+
+				default:
+					base.AddReference(referenceId, globalId);
+					break;
+			}
+		}
+
+		public override void RemoveReference(ModelCode referenceId, long globalId)
+		{
+			switch (referenceId)
+			{
+				case ModelCode.TERMINAL_CONDEQ:
+					if (terminals.Contains(globalId))
+					{
+						terminals.Remove(globalId);
+					}
+					else
+					{
+						CommonTrace.WriteTrace(CommonTrace.TraceWarning, "Entity (GID = 0x{0:x16}) doesn't contain reference 0x{1:x16}.", this.GlobalId, globalId);
+					}
+					break;
+				default:
+					base.RemoveReference(referenceId, globalId);
+					break;
+			}
 		}
 
 		#endregion IReference implementation
