@@ -196,5 +196,93 @@ namespace FTN.Services.NetworkModelService
 			}
 		}
 
+
+        #region MOJE FUNCKIJE
+        
+		public List<long> GetAllGIDs()
+        {
+            try
+            {
+				return nm.GetAllGIDs();
+            }
+			catch(Exception e)
+            {
+				string message = $"Getting all GIDs failed: {e.Message}";
+				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
+				throw new Exception(message);
+            }
+        }
+
+		public List<ModelCode>GetAllProperties(long gid)
+        {
+            try
+            {
+				return nm.GetAllProperties(gid);
+            }
+            catch (Exception e )
+            {
+				string message = $"Getting all properties failed: {e.Message}";
+				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
+				throw new Exception(message);
+			}
+        }
+
+		public List<ModelCode> GetAllConcreteModels()
+		{
+			try
+			{
+				return nm.GetAllConcreteModelCodes();
+			}
+			catch (Exception e)
+			{
+				string message = $"Getting all concrete model codes failed: {e.Message}";
+				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
+				throw new Exception(message);
+			}
+		}
+
+		public List<ModelCode> GetAllModelProps(ModelCode code)
+		{
+			try
+			{
+				return nm.GetAllModelProps(code);
+			}
+			catch (Exception e)
+			{
+				string message = $"Getting all concrete model codes failed: {e.Message}";
+				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
+				throw new Exception(message);
+			}
+		}
+
+		public List<ModelCode> GetReferenceProps(long gid)
+		{
+			try
+			{
+				return nm.GetReferenceProps(gid);
+			}
+			catch (Exception e)
+			{
+				string message = $"Getting all reference props codes failed: {e.Message}";
+				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
+				throw new Exception(message);
+			}
+		}
+
+		public List<ModelCode> GetProperties(List<ModelCode> codes)
+		{
+			try
+			{
+				return nm.GetProperties(codes);
+			}
+			catch (Exception e)
+			{
+				string message = $"Getting props codes failed: {e.Message}";
+				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
+				throw new Exception(message);
+			}
+		}
+		#endregion
+
 	}
 }

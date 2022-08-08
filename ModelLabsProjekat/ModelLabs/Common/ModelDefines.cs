@@ -9,10 +9,10 @@ namespace FTN.Common
 	{		
 		MASK_TYPE							= unchecked((short)0xFFFF),
 
-		ACLINESEGMENT						= 0x0001,
-		DCLINESEGMENT						= 0x0002,
-		SERIESCOMP							= 0x0003,
-		CONNODE								= 0x0004,
+		ACLINESEG						= 0x0001,
+		DCLINESEG						= 0x0002,
+		SERIES_COMP							= 0x0003,
+		CONNECTNODE								= 0x0004,
 		TERMINAL							= 0x0005,
 		PERLENGTHSEQIMP						= 0x0006,
 	}

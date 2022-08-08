@@ -23,15 +23,15 @@ namespace FTN.ServiceContracts
 
 		public int GetExtentValues(ModelCode entityType, List<ModelCode> propIds)
 		{
-			return Channel.GetExtentValues(entityType, propIds); 
-		}	
+			return Channel.GetExtentValues(entityType, propIds);
+		}
 
 		public int GetRelatedValues(long source, List<ModelCode> propIds, Association association)
 		{
 			return Channel.GetRelatedValues(source, propIds, association);
 		}
 
-		
+
 		public bool IteratorClose(int id)
 		{
 			return Channel.IteratorClose(id);
@@ -56,5 +56,35 @@ namespace FTN.ServiceContracts
 		{
 			return Channel.IteratorRewind(id);
 		}
-	}
+
+		public List<long> GetAllGIDs()
+        {
+			return Channel.GetAllGIDs();
+        }
+
+        public List<ModelCode> GetAllProperties(long gid)
+        {
+			return Channel.GetAllProperties(gid);
+        }
+
+        public List<ModelCode> GetAllConcreteModels()
+        {
+			return Channel.GetAllConcreteModels();
+        }
+
+        public List<ModelCode> GetAllModelProps(ModelCode code)
+        {
+			return Channel.GetAllModelProps(code);
+        }
+
+        public List<ModelCode> GetReferenceProps(long gid)
+        {
+			return Channel.GetReferenceProps(gid);
+        }
+
+        public List<ModelCode> GetProperties(List<ModelCode> codes)
+        {
+			return Channel.GetProperties(codes);
+        }
+    }
 }

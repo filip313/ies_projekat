@@ -126,19 +126,19 @@ namespace FTN.Services.NetworkModelService
 					io = new Terminal(globalId);
 					break;
 
-				case DMSType.SERIESCOMP:
+				case DMSType.SERIES_COMP:
 					io = new SeriesCompensator(globalId);
 					break;
 				case DMSType.PERLENGTHSEQIMP:
 					io = new PerLengthSequenceImpedance(globalId);
 					break;
-				case DMSType.DCLINESEGMENT:
+				case DMSType.DCLINESEG:
 					io = new DCLineSegment(globalId);
 					break;
-				case DMSType.CONNODE:
+				case DMSType.CONNECTNODE:
 					io = new ConnectivityNode(globalId);
 					break;
-				case DMSType.ACLINESEGMENT:
+				case DMSType.ACLINESEG:
 					io = new ACLineSegment(globalId);
 					break;
 				default:					

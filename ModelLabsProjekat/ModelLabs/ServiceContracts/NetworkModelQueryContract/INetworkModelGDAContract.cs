@@ -87,5 +87,23 @@ namespace FTN.ServiceContracts
 		/// <returns>TRUE if iterator is successfully closed</returns>
 		[OperationContract]		
 		bool IteratorClose(int id);
+
+		[OperationContract]
+		List<long> GetAllGIDs();
+
+		[OperationContract]
+		List<ModelCode> GetAllProperties(long gid);
+
+		[OperationContract]
+		List<ModelCode> GetAllConcreteModels();
+		[OperationContract]
+		List<ModelCode> GetAllModelProps(ModelCode code);
+
+		[OperationContract]
+		List<ModelCode> GetReferenceProps(long gid);
+
+		[OperationContract]
+		List<ModelCode> GetProperties(List<ModelCode> codes);
+
 	}
 }
