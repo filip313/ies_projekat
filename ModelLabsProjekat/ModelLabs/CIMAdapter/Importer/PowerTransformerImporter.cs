@@ -94,10 +94,10 @@ namespace FTN.ESI.SIMES.CIM.CIMAdapter.Importer
 
 			//// import all concrete model types (DMSType enum)
 			ImportConnectivityNodes();
+			ImportPerLegnthSequenceImpedances();
 			ImportSeriesCompensators();
 			ImportDCLineSegments();
 			ImportACLineSegments();
-			ImportPerLegnthSequenceImpedances();
 			ImportTerminals();
 
 			LogManager.Log("Loading elements and creating delta completed.", LogLevel.Info);
@@ -133,7 +133,7 @@ namespace FTN.ESI.SIMES.CIM.CIMAdapter.Importer
 			ResourceDescription rd = null;
 			if (cimConnNode != null)
 			{
-				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.CONNODE, importHelper.CheckOutIndexForDMSType(DMSType.CONNODE));
+				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.CONNECTNODE, importHelper.CheckOutIndexForDMSType(DMSType.CONNECTNODE));
 				rd = new ResourceDescription(gid);
 				importHelper.DefineIDMapping(cimConnNode.ID, gid);
 
@@ -172,7 +172,7 @@ namespace FTN.ESI.SIMES.CIM.CIMAdapter.Importer
 			ResourceDescription rd = null;
 			if (cimSeriesComp != null)
 			{
-				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.SERIESCOMP, importHelper.CheckOutIndexForDMSType(DMSType.SERIESCOMP));
+				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.SERIES_COMP, importHelper.CheckOutIndexForDMSType(DMSType.SERIES_COMP));
 				rd = new ResourceDescription(gid);
 				importHelper.DefineIDMapping(cimSeriesComp.ID, gid);
 
@@ -211,7 +211,7 @@ namespace FTN.ESI.SIMES.CIM.CIMAdapter.Importer
 			ResourceDescription rd = null;
 			if (cimSeriesComp != null)
 			{
-				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.DCLINESEGMENT, importHelper.CheckOutIndexForDMSType(DMSType.DCLINESEGMENT));
+				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.DCLINESEG, importHelper.CheckOutIndexForDMSType(DMSType.DCLINESEG));
 				rd = new ResourceDescription(gid);
 				importHelper.DefineIDMapping(cimSeriesComp.ID, gid);
 
@@ -250,7 +250,7 @@ namespace FTN.ESI.SIMES.CIM.CIMAdapter.Importer
 			ResourceDescription rd = null;
 			if (cimConnNode != null)
 			{
-				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.ACLINESEGMENT, importHelper.CheckOutIndexForDMSType(DMSType.ACLINESEGMENT));
+				long gid = ModelCodeHelper.CreateGlobalId(0, (short)DMSType.ACLINESEG, importHelper.CheckOutIndexForDMSType(DMSType.ACLINESEG));
 				rd = new ResourceDescription(gid);
 				importHelper.DefineIDMapping(cimConnNode.ID, gid);
 

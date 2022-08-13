@@ -131,7 +131,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Ostale
         {
             switch (referenceId)
             {
-                case ModelCode.CONNECTNODE_TERMINALS:
+                case ModelCode.TERMINAL_CONNECTNODE:
                     terminals.Add(globalId);
                     break;
 
@@ -145,7 +145,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Ostale
         {
             switch (referenceId)
             {
-                case ModelCode.CONNECTNODE_TERMINALS:
+                case ModelCode.TERMINAL_CONNECTNODE:
                     if (terminals.Contains(globalId))
                     {
                         terminals.Remove(globalId);

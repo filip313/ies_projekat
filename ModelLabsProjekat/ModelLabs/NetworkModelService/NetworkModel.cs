@@ -801,7 +801,7 @@ namespace FTN.Services.NetworkModelService
 
 		private Dictionary<short, int> GetCounters()
 		{
-			Dictionary<short, int> typesCounters = new Dictionary<short, int>();
+				Dictionary<short, int> typesCounters = new Dictionary<short, int>();
 
 			foreach (DMSType type in Enum.GetValues(typeof(DMSType)))
 			{

@@ -16,7 +16,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 		{
 		}
 
-        private List<long> terminals;
+        private List<long> terminals = new List<long>();
 
         public List<long> Terminals
         {

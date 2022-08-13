@@ -866,20 +866,20 @@ namespace FTN.Common
 
 		private void InitializeTypeIdsInInsertOrder()
 		{			
-			typeIdsInInsertOrder.Add(ModelCode.ACLINESEG);
-			typeIdsInInsertOrder.Add(ModelCode.DCLINESEG);
-			typeIdsInInsertOrder.Add(ModelCode.SERIES_COMP);
 			typeIdsInInsertOrder.Add(ModelCode.CONNECTNODE);
-			typeIdsInInsertOrder.Add(ModelCode.TERMINAL);
 			typeIdsInInsertOrder.Add(ModelCode.PERLENGTHSEQIMP);
+			typeIdsInInsertOrder.Add(ModelCode.SERIES_COMP);
+			typeIdsInInsertOrder.Add(ModelCode.DCLINESEG);
+			typeIdsInInsertOrder.Add(ModelCode.ACLINESEG);
+			typeIdsInInsertOrder.Add(ModelCode.TERMINAL);
 		}
 
 		private void InitializeNotSettablePropertyIds()
 		{			
 			notSettablePropertyIds.Add(ModelCode.IDOBJ_GID);
+			notSettablePropertyIds.Add(ModelCode.PERLENGTHIMP_ACLINESEGS);
 			notSettablePropertyIds.Add(ModelCode.CONNECTNODE_TERMINALS);
 			notSettablePropertyIds.Add(ModelCode.CONDEQ_TERMINALS);
-			notSettablePropertyIds.Add(ModelCode.PERLENGTHIMP_ACLINESEGS);
 		}
 	
 		# endregion Initialization of metadata

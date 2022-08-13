@@ -104,7 +104,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Ostale
 		{
 			switch (referenceId)
 			{
-				case ModelCode.PERLENGTHIMP_ACLINESEGS:
+				case ModelCode.ACLINESEG_PERLENGTHIMP:
 					acLineSegments.Add(globalId);
 					break;
 
@@ -118,7 +118,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Ostale
 		{
 			switch (referenceId)
 			{
-				case ModelCode.PERLENGTHIMP_ACLINESEGS:
+				case ModelCode.ACLINESEG_PERLENGTHIMP:
 
 					if (acLineSegments.Contains(globalId))
 					{
